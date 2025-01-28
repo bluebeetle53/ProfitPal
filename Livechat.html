@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Group</title>
+     <meta name="monetag" content="18a4805400631d6ede66478af49980f7">
+    
+<script type='text/javascript' src='//slushhelmetmirth.com/d9/80/e5/d980e590b722c4683cfae79509f8e82e.js'></script>
+  <style>
+    /* styles.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ece5dd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#chat-container {
+  width: 100%;
+  max-width: 400px;
+  height: 90vh;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header {
+  background-color: #075e54;
+  color: #ffffff;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+#message-area {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #d9fdd3;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  margin: 5px 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.message.sent {
+  align-self: flex-end;
+  background-color: #dcf8c6;
+}
+
+.message.received {
+  align-self: flex-start;
+  background-color: #ffffff;
+  border: 1px solid #ece5dd;
+}
+
+footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#message-input-area {
+  display: flex;
+  gap: 10px;
+}
+
+#message-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+#message-input:focus {
+  border-color: #075e54;
+}
+
+#send-button {
+  background-color: #075e54;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#send-button:hover {
+  background-color: #0a7e65;
+}
+
+#storage-option {
+  text-align: center;
+  font-size: 14px;
+}
+
+#storage-option input {
+  margin-right: 5px;
+}
+  </style>
+ 
+      <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('gizokraijaw.net',8828415,document.createElement('script'))</script>
+  
+      <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',8816811,document.createElement('script'))</script>
+  
+  <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',8860443,document.createElement('script'))</script>
+  
+  <script type='text/javascript' src='//slushhelmetmirth.com/39/2a/0d/392a0d28346a0e19cd71e87eccfdecf0.js'></script>
+  
+<!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-database-compat.js"></script>
+    
+</head>
+<body>
+  <div id="chat-container">
+    <header>
+      <div class="header-content">
+        <h1>ProfitPal Chat Group</h1>
+      </div>
+    </header>
+
+    <div id="message-area">
+      <!-- Messages will be dynamically inserted here -->
+    </div>
+
+    <footer>
+      <div id="message-input-area">
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button id="send-button">Send</button>
+      </div>
+      <div id="storage-option">
+        <label>
+          <input type="radio" id="local-storage-toggle">
+          Save read messages locally
+        </label>
+      </div>
+    </footer>
+  </div>
+  <script>
+    // script.js
+      // Firebase Configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDJP2XIR51qGTLINiKvEoscYTMt11CaZ5s",
+    authDomain: "paytrust-71e30.firebaseapp.com",
+    databaseURL: "https://paytrust-71e30-default-rtdb.firebaseio.com/",
+    projectId: "paytrust-71e30",
+    storageBucket: "gs://paytrust-71e30.appspot.com",
+    messagingSenderId: "492609516838",
+    appId: "1:492609516838:android:5a924ad3b7e8e508fa3de7"
+};
+
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+// HTML elements
+const messageInput = document.getElementById("message-input");
+const sendButton = document.getElementById("send-button");
+const messageArea = document.getElementById("message-area");
+const localStorageToggle = document.getElementById("local-storage-toggle");
+
+// Words to filter
+const blockedWords = ["https", "stupid", "offensive", "insult", "scam", "yabaway", "miloboom", "whatsapp", "fool", "stupid", "fake", "fraud", "leaving"];
+
+// Function to validate messages
+function isMessageValid(message) {
+  return !blockedWords.some((word) => message.toLowerCase().includes(word));
+}
+
+// Function to add a message to the database
+function addMessageToDatabase(message, type) {
+  const timestamp = Date.now();
+  database.ref("messages/" + timestamp).set({
+    message: message,
+    type: type,
+    timestamp: timestamp,
+  });
+}
+
+// Function to render messages
+function renderMessage(message, type) {
+  const messageDiv = document.createElement("div");
+  messageDiv.classList.add("message", type);
+  messageDiv.textContent = message;
+  messageArea.appendChild(messageDiv);
+  messageArea.scrollTop = messageArea.scrollHeight; // Auto-scroll
+}
+
+// Send button functionality
+sendButton.addEventListener("click", () => {
+  const message = messageInput.value.trim();
+  if (message === "") {
+    alert("Message cannot be empty!");
+    return;
+  }
+
+  if (!isMessageValid(message)) {
+    alert("Your message contains inappropriate words and cannot be sent.");
+    return;
+  }
+
+  addMessageToDatabase(message, "sent");
+  renderMessage(message, "sent");
+  messageInput.value = "";
+});
+
+// Load messages from Firebase
+database.ref("messages").on("child_added", (snapshot) => {
+  const data = snapshot.val();
+  renderMessage(data.message, data.type);
+});
+
+// Save read messages locally
+localStorageToggle.addEventListener("change", () => {
+  if (localStorageToggle.checked) {
+    database.ref("messages").once("value", (snapshot) => {
+      const messages = snapshot.val();
+      localStorage.setItem("chatMessages", JSON.stringify(messages));
+      alert("Messages saved locally.");
+    });
+  }
+});
+
+// Auto-delete messages every hour
+setInterval(() => {
+  const oneHourAgo = Date.now() - 3600000;
+  database
+    .ref("messages")
+    .orderByChild("timestamp")
+    .endAt(oneHourAgo)
+    .once("value", (snapshot) => {
+      const messages = snapshot.val();
+      if (messages) {
+        Object.keys(messages).forEach((key) => {
+          database.ref("messages/" + key).remove();
+        });
+        alert("Old messages deleted from the database.");
+      }
+    });
+}, 3600000);
+
+  </script>

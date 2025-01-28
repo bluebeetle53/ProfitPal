@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProfitPal - Signup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 10px;
+    }
+
+    .container {
+      background: linear-gradient(135deg, #ffed9f, #1b7431);
+      border-radius: 15px;
+      padding: 30px 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      width: 50px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-control input {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 14px;
+      border: none;
+      border-bottom: 2px solid #ddd;
+      border-radius: 5px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    .form-control input:focus {
+      border-color: #ffbb33;
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    button {
+      background: #ffbb33;
+      border: none;
+      color: #fff;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #e5a622;
+    }
+
+    .bottom-text {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .bottom-text a {
+      color: #ffbb33;
+      text-decoration: none;
+    }
+  </style>
+  <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-database-compat.js"></script>
+
+  
+</head>
+<body>
+  <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/128/14320/14320037.png" alt="ProfitPal Logo" class="logo">
+    <h2>Welcome Pal</h2>
+    <form id="signupForm">
+      <div class="form-control">
+        <input type="text" id="name" placeholder="Name" required>
+      </div>
+      <div class="form-control">
+        <input type="email" id="email" placeholder="Email" required>
+      </div>
+      <div class="form-control">
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <div class="form-control">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+      </div>
+      <div class="form-footer">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p class="bottom-text">
+      Already have an account? <a href="#">Log in</a>
+    </p>
+  </div>
+
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDJP2XIR51qGTLINiKvEoscYTMt11CaZ5s",
+      authDomain: "paytrust-71e30.firebaseapp.com",
+      databaseURL: "https://paytrust-71e30-default-rtdb.firebaseio.com/",
+      projectId: "paytrust-71e30",
+      storageBucket: "gs://paytrust-71e30.appspot.com",
+      messagingSenderId: "492609516838",
+      appId: "1:492609516838:android:5a924ad3b7e8e508fa3de7"
+    };
+    
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+
+   // Form Submission
+document.getElementById('signupForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  if (password !== confirmPassword) {
+    alert('Passwords do not match!');
+    return;
+  }
+
+  // Save User Data to Firebase Realtime Database
+  const userId = Date.now(); // Use timestamp as a unique ID
+  const userRef = database.ref('users/' + userId);
+
+  userRef.set({
+    name: name,
+    email: email,
+    password: password, // Note: In production, hash the password for security
+    rewards: 0 // Initial rewards balance
+  })
+    .then(() => {
+      alert('Welcome back, invite and get ₦300!');
+      // Save user details to localStorage for use on other pages
+      localStorage.setItem('userId', userId);
+      localStorage.setItem('username', name);
+      // Redirect to homepage
+      window.location.href = "ProfitPal(homepage).html";
+    })
+    .catch((error) => {
+      alert('Error: ' + error.message);
+    });
+});
+  </script>
+</body>
+</html>
