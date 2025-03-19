@@ -1,267 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Group</title>
-     <meta name="monetag" content="18a4805400631d6ede66478af49980f7">
-    
-<script type='text/javascript' src='//slushhelmetmirth.com/d9/80/e5/d980e590b722c4683cfae79509f8e82e.js'></script>
-  <style>
-    /* styles.css */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ece5dd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProfitPal Chat Group</title>
+    <meta name="monetag" content="18a4805400631d6ede66478af49980f7" />
 
-#chat-container {
-  width: 100%;
-  max-width: 400px;
-  height: 90vh;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-header {
-  background-color: #075e54;
-  color: #ffffff;
-  padding: 10px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      #chat-container {
+        width: 100%;
+        max-width: 450px;
+        height: 90vh;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
 
-header h1 {
-  margin: 0;
-  font-size: 20px;
-}
+      header {
+        background-color: #128c7e;
+        color: #ffffff;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-#message-area {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  background-color: #d9fdd3;
-  display: flex;
-  flex-direction: column;
-}
+      header h1 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 600;
+      }
 
-.message {
-  margin: 5px 0;
-  padding: 8px 12px;
-  border-radius: 10px;
-  max-width: 70%;
-  word-wrap: break-word;
-}
+      #message-area {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background-color: #e5ded8;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        display: flex;
+        flex-direction: column;
+      }
 
-.message.sent {
-  align-self: flex-end;
-  background-color: #dcf8c6;
-}
+      .message {
+        margin: 6px 0;
+        padding: 10px 14px;
+        border-radius: 15px;
+        max-width: 75%;
+        word-wrap: break-word;
+        position: relative;
+        font-size: 15px;
+        line-height: 1.4;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
 
-.message.received {
-  align-self: flex-start;
-  background-color: #ffffff;
-  border: 1px solid #ece5dd;
-}
+      .message.sent {
+        align-self: flex-end;
+        background-color: #d9fdd3;
+        border-bottom-right-radius: 4px;
+      }
 
-footer {
-  background-color: #f0f0f0;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+      .message.received {
+        align-self: flex-start;
+        background-color: #ffffff;
+        border-bottom-left-radius: 4px;
+      }
 
-#message-input-area {
-  display: flex;
-  gap: 10px;
-}
+      .message-time {
+        font-size: 11px;
+        color: #8c8c8c;
+        text-align: right;
+        margin-top: 4px;
+      }
 
-#message-input {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  outline: none;
-}
+      footer {
+        background-color: #f6f6f6;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-top: 1px solid #e0e0e0;
+      }
 
-#message-input:focus {
-  border-color: #075e54;
-}
+      #message-input-area {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
 
-#send-button {
-  background-color: #075e54;
-  color: #ffffff;
-  border: none;
-  border-radius: 20px;
-  padding: 8px 15px;
-  cursor: pointer;
-  font-size: 14px;
-}
+      #message-input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        outline: none;
+        font-size: 15px;
+        background-color: #fff;
+        transition: border-color 0.2s;
+      }
 
-#send-button:hover {
-  background-color: #0a7e65;
-}
+      #message-input:focus {
+        border-color: #128c7e;
+      }
 
-#storage-option {
-  text-align: center;
-  font-size: 14px;
-}
+      #send-button {
+        background-color: #128c7e;
+        color: #ffffff;
+        border: none;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s;
+      }
 
-#storage-option input {
-  margin-right: 5px;
-}
-  </style>
- 
-      <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('gizokraijaw.net',8828415,document.createElement('script'))</script>
-  
-      <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',8816811,document.createElement('script'))</script>
-  
-  <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',8860443,document.createElement('script'))</script>
-  
-  <script type='text/javascript' src='//slushhelmetmirth.com/39/2a/0d/392a0d28346a0e19cd71e87eccfdecf0.js'></script>
-  
-<!-- Firebase SDK -->
+      #send-button:hover {
+        background-color: #0d7d70;
+      }
+
+      #send-button i {
+        transform: rotate(45deg);
+      }
+
+      #storage-option {
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+      }
+
+      #storage-option input {
+        margin-right: 5px;
+      }
+
+      .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #888;
+        font-size: 16px;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .empty-state i {
+        font-size: 50px;
+        margin-bottom: 15px;
+        color: #128c7e;
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="//slushhelmetmirth.com/39/2a/0d/392a0d28346a0e19cd71e87eccfdecf0.js"
+    ></script>
+
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-database-compat.js"></script>
-    
-</head>
-<body>
-  <div id="chat-container">
-    <header>
-      <div class="header-content">
-        <h1>ProfitPal Chat Group</h1>
-      </div>
-    </header>
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="chat-container">
+      <header>
+        <h1><i class="fas fa-comment-dollar"></i> ProfitPal Chat Group</h1>
+      </header>
 
-    <div id="message-area">
-      <!-- Messages will be dynamically inserted here -->
+      <div id="message-area">
+        <div class="empty-state" id="empty-state">
+          <i class="fas fa-comments"></i>
+          <p>No messages yet. Be the first to start the conversation!</p>
+        </div>
+        <!-- Messages will be dynamically inserted here -->
+      </div>
+
+      <footer>
+        <div id="message-input-area">
+          <input
+            type="text"
+            id="message-input"
+            placeholder="Type a message..."
+          />
+          <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <div id="storage-option">
+          <label>
+            <input type="checkbox" id="local-storage-toggle" />
+            Save chat history locally
+          </label>
+        </div>
+      </footer>
     </div>
-
-    <footer>
-      <div id="message-input-area">
-        <input type="text" id="message-input" placeholder="Type a message...">
-        <button id="send-button">Send</button>
-      </div>
-      <div id="storage-option">
-        <label>
-          <input type="radio" id="local-storage-toggle">
-          Save read messages locally
-        </label>
-      </div>
-    </footer>
-  </div>
-  <script>
-    // script.js
+    <script
+      type="text/javascript"
+      src="//slushhelmetmirth.com/39/2a/0d/392a0d28346a0e19cd71e87eccfdecf0.js"
+    ></script>
+    <script>
       // Firebase Configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyDJP2XIR51qGTLINiKvEoscYTMt11CaZ5s",
-    authDomain: "paytrust-71e30.firebaseapp.com",
-    databaseURL: "https://paytrust-71e30-default-rtdb.firebaseio.com/",
-    projectId: "paytrust-71e30",
-    storageBucket: "gs://paytrust-71e30.appspot.com",
-    messagingSenderId: "492609516838",
-    appId: "1:492609516838:android:5a924ad3b7e8e508fa3de7"
-};
+      const firebaseConfig = {
+        apiKey: "AIzaSyDJP2XIR51qGTLINiKvEoscYTMt11CaZ5s",
+        authDomain: "paytrust-71e30.firebaseapp.com",
+        databaseURL: "https://paytrust-71e30-default-rtdb.firebaseio.com/",
+        projectId: "paytrust-71e30",
+        storageBucket: "gs://paytrust-71e30.appspot.com",
+        messagingSenderId: "492609516838",
+        appId: "1:492609516838:android:5a924ad3b7e8e508fa3de7",
+      };
 
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+      // HTML elements
+      const messageInput = document.getElementById("message-input");
+      const sendButton = document.getElementById("send-button");
+      const messageArea = document.getElementById("message-area");
+      const localStorageToggle = document.getElementById(
+        "local-storage-toggle"
+      );
+      const emptyState = document.getElementById("empty-state");
 
-// HTML elements
-const messageInput = document.getElementById("message-input");
-const sendButton = document.getElementById("send-button");
-const messageArea = document.getElementById("message-area");
-const localStorageToggle = document.getElementById("local-storage-toggle");
-
-// Words to filter
-const blockedWords = ["https", "stupid", "offensive", "insult", "scam", "yabaway", "miloboom", "whatsapp", "fool", "stupid", "fake", "fraud", "leaving"];
-
-// Function to validate messages
-function isMessageValid(message) {
-  return !blockedWords.some((word) => message.toLowerCase().includes(word));
-}
-
-// Function to add a message to the database
-function addMessageToDatabase(message, type) {
-  const timestamp = Date.now();
-  database.ref("messages/" + timestamp).set({
-    message: message,
-    type: type,
-    timestamp: timestamp,
-  });
-}
-
-// Function to render messages
-function renderMessage(message, type) {
-  const messageDiv = document.createElement("div");
-  messageDiv.classList.add("message", type);
-  messageDiv.textContent = message;
-  messageArea.appendChild(messageDiv);
-  messageArea.scrollTop = messageArea.scrollHeight; // Auto-scroll
-}
-
-// Send button functionality
-sendButton.addEventListener("click", () => {
-  const message = messageInput.value.trim();
-  if (message === "") {
-    alert("Message cannot be empty!");
-    return;
-  }
-
-  if (!isMessageValid(message)) {
-    alert("Your message contains inappropriate words and cannot be sent.");
-    return;
-  }
-
-  addMessageToDatabase(message, "sent");
-  renderMessage(message, "sent");
-  messageInput.value = "";
-});
-
-// Load messages from Firebase
-database.ref("messages").on("child_added", (snapshot) => {
-  const data = snapshot.val();
-  renderMessage(data.message, data.type);
-});
-
-// Save read messages locally
-localStorageToggle.addEventListener("change", () => {
-  if (localStorageToggle.checked) {
-    database.ref("messages").once("value", (snapshot) => {
-      const messages = snapshot.val();
-      localStorage.setItem("chatMessages", JSON.stringify(messages));
-      alert("Messages saved locally.");
-    });
-  }
-});
-
-// Auto-delete messages every hour
-setInterval(() => {
-  const oneHourAgo = Date.now() - 3600000;
-  database
-    .ref("messages")
-    .orderByChild("timestamp")
-    .endAt(oneHourAgo)
-    .once("value", (snapshot) => {
-      const messages = snapshot.val();
-      if (messages) {
-        Object.keys(messages).forEach((key) => {
-          database.ref("messages/" + key).remove();
-        });
-        alert("Old messages deleted from the database.");
+      // Check for saved preference
+      if (localStorage.getItem("profitpalSaveMessages") === "true") {
+        localStorageToggle.checked = true;
       }
-    });
-}, 3600000);
 
-  </script>
+      // Words to filter
+      const blockedWords = [
+        "https",
+        "stupid",
+        "offensive",
+        "insult",
+        "scam",
+        "yabaway",
+        "miloboom",
+        "whatsapp",
+        "fool",
+        "stupid",
+        "fake",
+        "fraud",
+        "leaving",
+      ];
+
+      // Function to format timestamp
+      function formatTime(timestamp) {
+        const date = new Date(timestamp);
+        return date.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      }
+
+      // Function to validate messages
+      function isMessageValid(message) {
+        return !blockedWords.some((word) =>
+          message.toLowerCase().includes(word)
+        );
+      }
+
+      // Function to add a message to the database
+      function addMessageToDatabase(message, type) {
+        const timestamp = Date.now();
+        database.ref("profitpalchat/" + timestamp).set({
+          message: message,
+          type: type,
+          timestamp: timestamp,
+        });
+      }
+
+      // Function to render messages
+      function renderMessage(message, type, timestamp) {
+        // Hide empty state if it's visible
+        if (emptyState.style.display !== "none") {
+          emptyState.style.display = "none";
+        }
+
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add("message", type);
+
+        const messageContent = document.createElement("div");
+        messageContent.textContent = message;
+        messageDiv.appendChild(messageContent);
+
+        const timeElement = document.createElement("div");
+        timeElement.classList.add("message-time");
+        timeElement.textContent = formatTime(timestamp);
+        messageDiv.appendChild(timeElement);
+
+        messageArea.appendChild(messageDiv);
+        messageArea.scrollTop = messageArea.scrollHeight; // Auto-scroll
+      }
+
+      // Send button functionality
+      sendButton.addEventListener("click", sendMessage);
+
+      // Also send on Enter key
+      messageInput.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+          sendMessage();
+        }
+      });
+
+      function sendMessage() {
+        const message = messageInput.value.trim();
+        if (message === "") {
+          return;
+        }
+
+        if (!isMessageValid(message)) {
+          alert(
+            "Your message contains inappropriate content and cannot be sent."
+          );
+          return;
+        }
+
+        const timestamp = Date.now();
+        addMessageToDatabase(message, "sent");
+        renderMessage(message, "sent", timestamp);
+        messageInput.value = "";
+        messageInput.focus();
+      }
+
+      // Load messages from Firebase
+      database.ref("profitpalchat").on("child_added", (snapshot) => {
+        const data = snapshot.val();
+        renderMessage(data.message, data.type, data.timestamp);
+      });
+
+      // Save read messages locally
+      localStorageToggle.addEventListener("change", () => {
+        localStorage.setItem(
+          "profitpalSaveMessages",
+          localStorageToggle.checked
+        );
+
+        if (localStorageToggle.checked) {
+          database.ref("profitpalchat").once("value", (snapshot) => {
+            const messages = snapshot.val();
+            if (messages) {
+              localStorage.setItem(
+                "profitpalChatMessages",
+                JSON.stringify(messages)
+              );
+            }
+          });
+        } else {
+          localStorage.removeItem("profitpalChatMessages");
+        }
+      });
+
+      // Load locally saved messages if there are no messages yet
+      database.ref("profitpalchat").once("value", (snapshot) => {
+        if (!snapshot.exists() && localStorageToggle.checked) {
+          const savedMessages = localStorage.getItem("profitpalChatMessages");
+          if (savedMessages) {
+            const messages = JSON.parse(savedMessages);
+            Object.entries(messages).forEach(([key, data]) => {
+              renderMessage(data.message, data.type, data.timestamp);
+            });
+          }
+        }
+      });
+
+      // Auto-delete messages every hour (3600000 ms)
+      setInterval(() => {
+        const oneHourAgo = Date.now() - 3600000;
+        database
+          .ref("profitpalchat")
+          .orderByChild("timestamp")
+          .endAt(oneHourAgo)
+          .once("value", (snapshot) => {
+            const messages = snapshot.val();
+            if (messages) {
+              Object.keys(messages).forEach((key) => {
+                database.ref("profitpalchat/" + key).remove();
+              });
+              console.log("Old messages deleted from the database.");
+            }
+          });
+      }, 3600000);
+
+      // Check if there are any messages
+      database.ref("profitpalchat").once("value", (snapshot) => {
+        if (!snapshot.exists()) {
+          emptyState.style.display = "flex";
+        } else {
+          emptyState.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
