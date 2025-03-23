@@ -33,463 +33,407 @@
       href="https://cdn-icons-png.flaticon.com/128/14320/14320037.png"
     />
     <link rel="canonical" href="https://shorturl.at/FNgkn" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      /* Base Styles */
+      :root {
+        --primary-color: #5d3fd3;
+        --primary-light: #7b68ee;
+        --primary-dark: #4b0082;
+        --secondary-color: #ffa500;
+        --text-color: #333;
+        --text-light: #666;
+        --bg-color: #f5f7fa;
+        --card-bg: #ffffff;
+        --success-color: #28a745;
+        --danger-color: #dc3545;
+        --border-radius: 12px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f8f9fa;
-        color: #333;
+        background-color: var(--bg-color);
+        color: var(--text-color);
         line-height: 1.6;
-        padding: 0;
-        margin: 0 auto;
-        max-width: 500px;
       }
 
       .container {
-        max-width: 100%;
-        margin: 0 auto 20px;
-        background-color: #ffffff;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
       }
 
-      /* Header Styles */
+      /* Header Styling */
       .header {
-        background: linear-gradient(135deg, #1b7431, #25a244);
-        color: #ffffff;
-        padding: 18px 20px;
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        margin-bottom: 20px;
       }
 
       .animated-header {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #ffffff;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        font-family: "Trebuchet MS", sans-serif;
-        animation: pulse 2s infinite;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin: 0;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: colorFlow 5s infinite alternate;
       }
 
-      @keyframes pulse {
+      @keyframes colorFlow {
         0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
+          background-position: 0% 50%;
         }
         100% {
-          transform: scale(1);
+          background-position: 100% 50%;
         }
       }
 
       .chip {
-        display: inline-block;
-        padding: 8px 16px;
-        font-size: 14px;
-        font-weight: 600;
-        text-align: center;
+        background-color: var(--primary-light);
         color: white;
-        background-color: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.4);
+        padding: 8px 18px;
         border-radius: 50px;
         text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
         transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(93, 63, 211, 0.3);
       }
 
       .chip:hover {
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: var(--primary-dark);
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
       /* Profile Section */
       .profile-section {
-        text-align: center;
-        padding: 24px 20px;
-        background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+        display: flex;
+        align-items: center;
+        background-color: var(--card-bg);
+        padding: 20px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 20px;
       }
 
       .avatar {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
-        margin: 0 auto;
-        border: 3px solid #1b7431;
-        padding: 3px;
-        background-color: #fff;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         object-fit: cover;
+        border: 3px solid var(--primary-light);
+        margin-right: 15px;
       }
 
       .profile-info h2 {
-        margin: 15px 0 5px;
         font-size: 20px;
-        color: #333;
+        margin-bottom: 4px;
+        color: var(--primary-dark);
       }
 
       .profile-info p {
-        margin: 0;
-        color: #666;
-        font-size: 15px;
+        color: var(--text-light);
+        font-size: 14px;
       }
 
       /* Balance Section */
       .balance-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--primary-dark)
+        );
+        padding: 25px;
+        border-radius: var(--border-radius);
+        color: white;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
         text-align: center;
-        background: linear-gradient(to right, #e8f5ee, #f0f9f4);
-        padding: 24px 20px;
-        border-radius: 12px;
-        margin: 0 15px;
-        box-shadow: 0 4px 12px rgba(27, 116, 49, 0.1);
       }
 
       .balance-section p {
-        margin: 0;
-        color: #666;
         font-size: 16px;
-        font-weight: 500;
+        opacity: 0.9;
+        margin-bottom: 5px;
       }
 
       .balance-section h1 {
-        margin: 10px 0;
-        font-size: 38px;
-        color: #1b7431;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      #currency-symbol {
-        font-size: 28px;
-        margin-right: 5px;
-        color: #1b7431;
-      }
-
-      #rewards {
-        font-size: 38px;
-        color: #1b7431;
+        font-size: 36px;
         font-weight: 700;
       }
 
       /* Action Buttons */
       .action-buttons {
         display: flex;
-        justify-content: space-around;
-        padding: 24px 15px;
-        background-color: #ffffff;
-        margin-bottom: 20px;
+        justify-content: space-between;
+        margin-bottom: 30px;
       }
 
       .button {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
         cursor: pointer;
-        transition: transform 0.2s;
-        width: 80px;
-      }
-
-      .button:hover {
-        transform: translateY(-5px);
       }
 
       .icon {
-        width: 50px;
-        height: 50px;
-        margin: 0 auto 10px;
-        border-radius: 12px;
-        background-color: #f8f9fa;
+        width: 55px;
+        height: 55px;
+        background-color: white;
+        border-radius: 50%;
         display: flex;
-        align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        align-items: center;
+        margin-bottom: 8px;
+        box-shadow: var(--shadow);
         transition: all 0.3s ease;
       }
 
-      .icon:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      .icon img {
+        width: 30px;
+        height: 30px;
       }
 
-      .withdraw,
-      .bank-icon,
-      .deposit {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
+      .button:hover .icon {
+        transform: translateY(-5px);
+        background-color: var(--primary-light);
       }
 
       .button p {
-        margin: 8px 0 0;
         font-size: 14px;
-        font-weight: 500;
-        color: #555;
-      }
-
-      /* Referral Section */
-      #referral-section {
-        background-color: #fff;
-        border: 1px solid #e6e6e6;
-        border-radius: 12px;
-        padding: 24px;
-        margin: 20px auto;
-        width: 90%;
-        max-width: 600px;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-      }
-
-      #referral-section p {
-        margin: 0 0 12px;
-        font-weight: 600;
-        color: #1b7431;
-        font-size: 16px;
-      }
-
-      .referral-link,
-      .customize-text {
-        margin-top: 20px;
-      }
-
-      .link-container {
-        display: flex;
-        align-items: center;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        overflow: hidden;
-        background-color: #f9f9f9;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-      }
-
-      #referralInput {
-        flex: 1;
-        padding: 12px 15px;
-        border: none;
-        background: transparent;
-        font-size: 14px;
-        color: #333;
-        font-family: "Segoe UI", sans-serif;
-      }
-
-      #referralInput:focus {
-        outline: none;
-      }
-
-      .copyicon {
-        width: 35px;
-        height: 35px;
-        padding: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-right: 5px;
-      }
-
-      .copyicon:hover {
-        background-color: rgba(27, 116, 49, 0.1);
-        border-radius: 5px;
-      }
-
-      textarea {
-        width: 100%;
-        height: 90px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 12px 15px;
-        font-size: 14px;
-        color: #333;
-        resize: none;
-        background-color: #f9f9f9;
-        font-family: "Segoe UI", sans-serif;
-        margin-bottom: 10px;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-      }
-
-      textarea:focus {
-        outline: none;
-        border-color: #1b7431;
-        box-shadow: 0 0 0 2px rgba(27, 116, 49, 0.2);
-      }
-
-      button {
-        margin-top: 12px;
-        background: linear-gradient(to right, #1b7431, #25a244);
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        padding: 12px 20px;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(27, 116, 49, 0.2);
-      }
-
-      button:hover {
-        background: linear-gradient(to right, #166329, #1e8a38);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 10px rgba(27, 116, 49, 0.25);
-      }
-
-      /* Card Styles */
-      .card {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-        width: 90%;
-        padding: 24px;
+        color: var(--text-light);
         text-align: center;
-        margin: 25px auto;
+      }
+
+      /* Card Styling */
+      .card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
         overflow: hidden;
+        box-shadow: var(--shadow);
+        margin-bottom: 25px;
       }
 
       .card-header {
         display: flex;
         align-items: center;
-        margin-bottom: 20px;
+        padding: 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       }
 
       .card-header img {
-        border-radius: 12px;
-        width: 90px;
-        height: 90px;
-        margin-right: 20px;
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
         object-fit: contain;
-        background-color: #f5f5f5;
-        padding: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .card-details {
-        text-align: left;
       }
 
       .card-details h3 {
-        margin: 0 0 8px;
-        font-size: 22px;
-        color: #333;
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: var(--primary-dark);
       }
 
-      .card-details .price {
-        font-size: 24px;
-        color: #e63946;
-        font-weight: bold;
-      }
-
-      .card-details .original-price {
-        text-decoration: line-through;
-        color: #888;
+      .price {
+        font-weight: 600;
+        color: var(--primary-color);
         font-size: 16px;
-        margin-left: 10px;
       }
 
-      .card-details .limit {
+      .original-price {
+        text-decoration: line-through;
+        color: var(--text-light);
+        margin-left: 5px;
         font-size: 14px;
-        color: #666;
-        margin-top: 5px;
+      }
+
+      .limit {
+        font-size: 12px;
+        color: var(--text-light);
       }
 
       .buy-button {
-        background: linear-gradient(90deg, #1b7431, #25a244);
-        border: none;
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
-        padding: 14px 20px;
-        border-radius: 50px;
-        cursor: pointer;
-        margin: 5px 0 20px;
         width: 100%;
-        box-shadow: 0 4px 10px rgba(27, 116, 49, 0.2);
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        padding: 12px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
         transition: all 0.3s ease;
       }
 
       .buy-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(27, 116, 49, 0.3);
+        background-color: #e69500;
       }
 
       .card-content {
-        background: linear-gradient(135deg, #1b7431, #25a244);
         padding: 20px;
-        border-radius: 10px;
-        color: white;
-        box-shadow: 0 4px 10px rgba(27, 116, 49, 0.2);
+      }
+
+      .card-content p {
+        margin-bottom: 15px;
+        font-size: 14px;
       }
 
       .product-info {
         display: flex;
         justify-content: space-between;
-        margin-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        padding-top: 15px;
+        margin-bottom: 10px;
+        font-size: 14px;
       }
 
-      .product-info span {
-        font-size: 15px;
-        font-weight: bold;
+      .validity {
+        color: var(--text-light);
       }
 
       .price-info {
-        margin-top: 15px;
-        text-align: left;
+        background-color: rgba(93, 63, 211, 0.05);
+        padding: 15px;
+        border-radius: 8px;
       }
 
       .price-info p {
-        margin: 8px 0;
-        font-size: 15px;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 14px;
       }
 
-      /* Toast Notification */
-      #toast {
-        visibility: hidden;
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.8);
-        color: #fff;
-        padding: 12px 24px;
-        border-radius: 50px;
-        font-size: 15px;
-        max-width: 80%;
+      .price-info p:last-child {
+        margin-bottom: 0;
+      }
+
+      .price-info span {
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      /* Referral Section */
+      #referral-section {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      #referral-section > p {
         text-align: center;
-        opacity: 0;
-        transition: opacity 0.3s, visibility 0.3s;
-        z-index: 1000;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--primary-color);
       }
 
-      #toast.show {
-        visibility: visible;
-        opacity: 1;
+      .referral-link p {
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: var(--text-light);
       }
 
-      /* Bottom Sheet Styling */
+      .link-container {
+        display: flex;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      #referralInput {
+        flex: 1;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        color: var(--text-color);
+      }
+
+      .copyicon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .customize-text p {
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: var(--text-light);
+      }
+
+      #customText {
+        width: 100%;
+        height: 80px;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        resize: none;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      #copyTextButton {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.3s;
+        width: 100%;
+      }
+
+      #copyTextButton:hover {
+        background-color: var(--primary-dark);
+      }
+
+      /* Bottom Sheet */
       .bottom-sheet {
         position: fixed;
         bottom: -100%;
         left: 0;
-        right: 0;
-        background-color: #fff;
-        padding: 25px;
-        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
-        transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        max-width: 600px;
-        margin: 0 auto;
-        border-radius: 20px 20px 0 0;
-        z-index: 1000;
+        width: 100%;
+        height: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        transition: bottom 0.3s ease-in-out;
       }
 
       .bottom-sheet.active {
         bottom: 0;
+        height: 100%;
+      }
+
+      .bottom-sheet-content {
+        background-color: white;
+        border-radius: 20px 20px 0 0;
+        padding: 25px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
       }
 
       .bottom-sheet-header {
@@ -497,149 +441,130 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #eee;
       }
 
       .bottom-sheet-header h3 {
-        margin: 0;
-        font-size: 20px;
-        color: #333;
+        font-size: 18px;
+        color: var(--primary-dark);
       }
 
       .close-btn {
-        font-size: 28px;
+        font-size: 24px;
         cursor: pointer;
-        color: #888;
-        transition: color 0.3s;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-      }
-
-      .close-btn:hover {
-        color: #333;
-        background-color: #f5f5f5;
+        color: var(--text-light);
       }
 
       .input-field {
-        margin: 15px 0;
+        margin-bottom: 20px;
       }
 
       .input-field label {
         display: block;
         margin-bottom: 8px;
-        font-size: 15px;
-        font-weight: 500;
-        color: #555;
+        font-size: 14px;
+        color: var(--text-light);
       }
 
       .input-field input {
         width: 100%;
-        padding: 12px 15px;
-        font-size: 16px;
+        padding: 12px;
         border: 1px solid #ddd;
         border-radius: 8px;
-        background-color: #f9f9f9;
-        transition: all 0.3s ease;
-      }
-
-      .input-field input:focus {
-        outline: none;
-        border-color: #1b7431;
-        box-shadow: 0 0 0 2px rgba(27, 116, 49, 0.1);
-        background-color: #fff;
+        font-size: 16px;
       }
 
       #proceedBtn {
-        padding: 14px 20px;
-        background: linear-gradient(to right, #1b7431, #25a244);
+        width: 100%;
+        background-color: var(--primary-color);
         color: white;
         border: none;
+        padding: 14px;
         border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
         font-weight: 600;
-        width: 100%;
-        margin-top: 20px;
-        box-shadow: 0 4px 10px rgba(27, 116, 49, 0.2);
-        transition: all 0.3s ease;
+        cursor: pointer;
+        transition: background-color 0.3s;
       }
 
       #proceedBtn:hover {
-        background: linear-gradient(to right, #166329, #1e8a38);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(27, 116, 49, 0.25);
+        background-color: var(--primary-dark);
       }
 
-      /* Dialog Styling */
+      /* Dialog */
       .dialog {
         position: fixed;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
         display: none;
         justify-content: center;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.6);
-        z-index: 1100;
-        backdrop-filter: blur(4px);
-      }
-
-      .dialog.active {
-        display: flex;
+        z-index: 1000;
       }
 
       .dialog-content {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 15px;
-        text-align: center;
-        max-width: 400px;
+        background-color: white;
+        padding: 25px;
+        border-radius: 12px;
         width: 85%;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        animation: dialogFadeIn 0.3s ease-out;
-      }
-
-      @keyframes dialogFadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        max-width: 350px;
+        text-align: center;
       }
 
       .dialog-content p {
-        font-size: 18px;
-        margin-bottom: 25px;
-        color: #333;
-        line-height: 1.5;
+        margin-bottom: 20px;
+        font-size: 16px;
       }
 
       #closeDialog {
-        padding: 12px 25px;
-        background: linear-gradient(to right, #1b7431, #25a244);
+        background-color: var(--primary-color);
         color: white;
         border: none;
+        padding: 10px 30px;
         border-radius: 8px;
         cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        min-width: 120px;
-        box-shadow: 0 4px 10px rgba(27, 116, 49, 0.2);
+        font-weight: 500;
       }
 
-      #closeDialog:hover {
-        background: linear-gradient(to right, #166329, #1e8a38);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(27, 116, 49, 0.25);
+      /* Toast */
+      #toast {
+        visibility: hidden;
+        min-width: 250px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        border-radius: 8px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 30px;
+        font-size: 14px;
+      }
+
+      #toast.show {
+        visibility: visible;
+        animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
       }
     </style>
     <!-- Firebase SDK -->
@@ -653,7 +578,7 @@
         <a href="Profitpal(signup).html" class="chip">Logout</a>
       </div>
       <div class="profile-section">
-        <div class="avatar">
+        <div>
           <img
             src="https://cdn-icons-png.flaticon.com/128/14025/14025856.png"
             class="avatar"
@@ -676,7 +601,6 @@
           <div class="icon withdraw">
             <img
               src="https://cdn-icons-png.flaticon.com/128/4174/4174448.png"
-              class="icon withdraw"
               id="withdraw"
             />
           </div>
@@ -685,10 +609,7 @@
         <div class="button">
           <div class="icon bank-icon">
             <a href="Livechat.html">
-              <img
-                src="https://openclipart.org/image/400px/348722"
-                class="icon bank-icon"
-              />
+              <img src="https://openclipart.org/image/400px/348722" />
             </a>
           </div>
           <p>Live Chat</p>
@@ -698,7 +619,6 @@
             <a href="ProfitPal.html">
               <img
                 src="https://cdn-icons-png.flaticon.com/128/12550/12550954.png"
-                class="icon deposit"
                 id="deposit"
               />
             </a>
@@ -706,65 +626,65 @@
           <p>Deposit</p>
         </div>
       </div>
-    </div>
 
-    <div class="card">
-      <div class="card-header">
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/14320/14320037.png"
-          alt="Lucky Box"
-        />
-        <div class="card-details">
-          <h3>Pal 1</h3>
-          <p>
-            <span class="price">₦ 3500</span>
-            <span class="original-price">7000</span>
-          </p>
-          <p class="limit">Purchase limit: 20</p>
-        </div>
-      </div>
-      <button class="buy-button" onclick="showToast()">Buy lucky box</button>
-      <div class="card-content">
-        <p>Buy Lucky box to start earning every 24hr</p>
-        <div class="product-info">
-          <span>Pal 1</span>
-          <span class="validity">Validity: 30 days</span>
-        </div>
-        <div class="price-info">
-          <p>💎 Reference price: <span>3500₦</span></p>
-          <p>📈 Daily earnings: <span>700₦</span></p>
-        </div>
-      </div>
-    </div>
-    <div id="toast"></div>
-
-    <section id="referral-section">
-      <p>Earn ₦300 for each referral</p>
-      <div class="referral-link">
-        <p>Your referral link:</p>
-        <div class="link-container">
-          <input
-            type="text"
-            id="referralInput"
-            value="https://shorturl.at/FNgkn"
-            readonly
-          />
+      <div class="card">
+        <div class="card-header">
           <img
-            src="https://cdn-icons-png.flaticon.com/128/10419/10419629.png"
-            alt="Copy Icon"
-            class="copyicon"
-            id="copy"
+            src="https://cdn-icons-png.flaticon.com/128/14320/14320037.png"
+            alt="Lucky Box"
           />
+          <div class="card-details">
+            <h3>Pal 1</h3>
+            <p>
+              <span class="price">₦ 3500</span>
+              <span class="original-price">7000</span>
+            </p>
+            <p class="limit">Purchase limit: 20</p>
+          </div>
+        </div>
+        <button class="buy-button" onclick="showToast()">Buy lucky box</button>
+        <div class="card-content">
+          <p>Buy Lucky box to start earning every 24hr</p>
+          <div class="product-info">
+            <span>Pal 1</span>
+            <span class="validity">Validity: 30 days</span>
+          </div>
+          <div class="price-info">
+            <p>💎 Reference price: <span>3500₦</span></p>
+            <p>📈 Daily earnings: <span>700₦</span></p>
+          </div>
         </div>
       </div>
-      <div class="customize-text">
-        <p>Referral text:</p>
-        <textarea id="customText" readonly>
+      <div id="toast"></div>
+
+      <section id="referral-section">
+        <p>Earn ₦300 for each referral</p>
+        <div class="referral-link">
+          <p>Your referral link:</p>
+          <div class="link-container">
+            <input
+              type="text"
+              id="referralInput"
+              value="https://shorturl.at/FNgkn"
+              readonly
+            />
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/10419/10419629.png"
+              alt="Copy Icon"
+              class="copyicon"
+              id="copy"
+            />
+          </div>
+        </div>
+        <div class="customize-text">
+          <p>Referral text:</p>
+          <textarea id="customText" readonly>
 Come aboard ProfitPal! Invite your friends and earn ₦300 for every successful referral.</textarea
-        >
-        <button id="copyTextButton">Copy Text</button>
-      </div>
-    </section>
+          >
+          <button id="copyTextButton">Copy Text</button>
+        </div>
+      </section>
+    </div>
 
     <!-- Bottom Sheet -->
     <div id="bottomSheet" class="bottom-sheet">
@@ -800,13 +720,83 @@ Come aboard ProfitPal! Invite your friends and earn ₦300 for every successful 
     <div id="dialogBox" class="dialog">
       <div class="dialog-content">
         <p>
-          You have insufficient balance to make a withdrawal Minimum withdrawal
+          You have insufficient balance to make a withdrawal. Minimum withdrawal
           is ₦1,000
         </p>
         <button id="closeDialog">Close</button>
       </div>
     </div>
 
+    <script>
+      // Your existing JavaScript code will go here
+      function showToast() {
+        const toast = document.getElementById("toast");
+        toast.textContent = "Please deposit to buy this product";
+        toast.className = "show";
+        setTimeout(function () {
+          toast.className = toast.className.replace("show", "");
+        }, 3000);
+      }
+
+      // Withdraw bottom sheet
+      document
+        .getElementById("withdraw")
+        .addEventListener("click", function () {
+          document.getElementById("bottomSheet").classList.add("active");
+        });
+
+      document
+        .getElementById("closeBtn")
+        .addEventListener("click", function () {
+          document.getElementById("bottomSheet").classList.remove("active");
+        });
+
+      document
+        .getElementById("proceedBtn")
+        .addEventListener("click", function () {
+          document.getElementById("bottomSheet").classList.remove("active");
+          document.getElementById("dialogBox").style.display = "flex";
+        });
+
+      document
+        .getElementById("closeDialog")
+        .addEventListener("click", function () {
+          document.getElementById("dialogBox").style.display = "none";
+        });
+
+      // Copy functionality
+      document.getElementById("copy").addEventListener("click", function () {
+        const referralInput = document.getElementById("referralInput");
+        referralInput.select();
+        document.execCommand("copy");
+
+        const toast = document.getElementById("toast");
+        toast.textContent = "Referral link copied!";
+        toast.className = "show";
+        setTimeout(function () {
+          toast.className = toast.className.replace("show", "");
+        }, 3000);
+      });
+
+      document
+        .getElementById("copyTextButton")
+        .addEventListener("click", function () {
+          const customText = document.getElementById("customText");
+          customText.select();
+          document.execCommand("copy");
+
+          const toast = document.getElementById("toast");
+          toast.textContent = "Referral text copied!";
+          toast.className = "show";
+          setTimeout(function () {
+            toast.className = toast.className.replace("show", "");
+          }, 3000);
+        });
+
+      // For demo purposes, set a username and balance
+      document.getElementById("username").textContent = "User";
+      document.getElementById("rewards").textContent = "200";
+    </script>
     <script>
       function showToast() {
         const toast = document.getElementById("toast");
